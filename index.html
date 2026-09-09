@@ -5,145 +5,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Saya</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Atha Ayunia Zahra</h1>
-    <p>Saya seorang siswa MAN 3 Tulungagung yang sedang
-        belajar Rekayasa Perangkat Lunak (RPL)</p>
-    <img src="images.png" alt="photo Profile" height="150px" />
-    <section>
-        <h2>Hobi</h2>
-        <u1>
+    <div class="page">
+        <header class="hero">
+            <div class="profile-content">
+                <span class="badge">Web Profile</span>
+                <h1 id="text1" class="judul judul-besar">Atha Ayunia Zahra</h1>
+                <p id="text2" class="judul">
+                    Saya seorang siswa MAN 3 Tulungagung yang sedang
+                    belajar Rekayasa Perangkat Lunak (RPL)
+                </p>
+            </div>
+            <img src="images.png" alt="photo Profile" class="profile-photo">
+        </header>
+
+        <ul>
             <li>Membaca</li>
-            <l1>Merakit</l1>
+            <li>Merakit</li>
             <li>Menggambar</li>
-            <l1>Bermain game</l1>
-            </l1>
-        </u1>
-    </section>
-    <section>
-        <div>
-            <h2>Media Sosial</h2>
-            <a href="https://instagram.com/4_thaaynia" target="_blank"> @4_thaaynia</a>
-            <a href="https://tiktok.com/thaaa_ayn" target="_blank"> @thaaa_ayn</a>
-        </div>
-    </section>
-    <form>
-        <label>Nama:</label>
-        <input type="text" placeholder="Masukkan Nama Anda!">
+            <li>Bermain game</li>
+        </ul>
+        </section>
+        <section>
+            <div>
+                <h2>Media Sosial</h2>
+                <a href="https://instagram.com/4_thaaynia" target="_blank"> @4_thaaynia</a>
+                <a href="https://www.tiktok.com/@thaaa_ayn?is_from_webapp=1&sender_device=pc" target="_blank">
+                    @thaaa_ayn</a>
+            </div>
+        </section>
+        <form>
+            <label>Nama:</label>
+            <input type="text" placeholder="Masukkan Nama Anda!">
 
-        <label>Pesan</label>
-        <input type="text" placeholder="Masukkan Pesan Anda!">
+            <label>Pesan</label>
+            <input type="text" placeholder="Masukkan Pesan Anda!">
 
-        <button type="submit">kirim</button>
-    </form>
-    </section>
-    <!--Jadwal Pelajaran-->
-    <table border>
-        <thead>
-            <tr>
-                <th>Hari</th>
-                <th>Mata Pelajaran</th>
-            </tr>
-        </thead>
+            <button type="submit">kirim</button>
+        </form>
+        </section>
+        <!--Jadwal Pelajaran-->
+        <table border>
+            <thead>
+                <tr>
+                    <th>Hari</th>
+                    <th>Mata Pelajaran</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <tr>
-                <td rowspan="6">Senin</td>
-                <td>Sosiologi</td>
-            </tr>
-            <tr>
-                <td>Bahasa inggris</td>
-            </tr>
-            <tr>
-                <td>Biologi</td>
-            </tr>
-            <tr>
-                <td>SKI</td>
-            </tr>
-            <tr>
-                <td>Informatika</td>
-            </tr>
-            <tr>
-                <td>Akidah Akhlak</td>
-            </tr>
-            <tr>
-                <td rowspan="6">Selasa</td>
-                <td>Penjas Orkes</td>
-            </tr>
-            <tr>
-                <td>Kimia</td>
-            </tr>
-            <tr>
-                <td>Matematika</td>
-            </tr>
-            <tr>
-                <td>Bahasa Indonesia</td>
-            </tr>
-            <tr>
-                <td>Pendidikan Pancasila</td>
-            </tr>
-            <tr>
-                <td>Bahasa Indonesia</td>
-            </tr>
-            <tr>
-                <td rowspan="4">Rabu</td>
-                <td>Qur'an Hadist</td>
-            </tr>
-            <tr>
-                <td>Mtk TKA</td>
-            </tr>
-            <tr>
-                <td>Bahasa Arab</td>
-            </tr>
-            <tr>
-                <td>RPL</td>
-            </tr>
-            <tr>
-                <td rowspan="6">Kamis</td>
-                <td>Fiqih</td>
-            </tr>
-            <tr>
-                <td>Fisika</td>
-            </tr>
-            <tr>
-                <td>Matematika</td>
-            </tr>
-            <tr>
-                <td>Ekonomi</td>
-            </tr>
-            <tr>
-                <td>Bahasa Arab</td>
-            </tr>
-            <tr>
-                <td>Ekonomi</td>
-            </tr>
-            <tr>
-                <td rowspan="6">Jumat</td>
-                <td>Koding</td>
-            </tr>
-            <tr>
-                <td>Fisika</td>
-            </tr>
-            <tr>
-                <td>Bahasa Indonesia</td>
-            </tr>
-            <tr>
-                <td>Pendidikan Pancasila</td>
-            </tr>
-            <tr>
-                <td>Seni Budaya</td>
-            </tr>
-            <tr>
-                <td>Bahasa Inggris</td>
-            </tr>
-
-            <body></body>
-        </tbody>
-
-    </table>
-
+            <tbody>
+                <tr>
+                    <td rowspan="6">Senin</td>
+                    <td>Sosiologi</td>
+                </tr>
+                <tr>
+                    <td>Bahasa inggris</td>
+                </tr>
+                <tr>
+                    <td>Biologi</td>
+                </tr>
+                <tr>
+                    <td>SKI</td>
+                </tr>
+                <tr>
+                    <td>Informatika</td>
+                </tr>
+                <tr>
+                    <td>Akidah Akhlak</td>
+                </tr>
+                <tr>
+                    <td rowspan="6">Selasa</td>
+                    <td>Penjas Orkes</td>
+                </tr>
+                <tr>
+                    <td>Kimia</td>
+                </tr>
+                <tr>
+                    <td>Matematika</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Indonesia</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Pancasila</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Indonesia</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">Rabu</td>
+                    <td>Qur'an Hadist</td>
+                </tr>
+                <tr>
+                    <td>Mtk TKA</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Arab</td>
+                </tr>
+                <tr>
+                    <td>RPL</td>
+                </tr>
+                <tr>
+                    <td rowspan="6">Kamis</td>
+                    <td>Fiqih</td>
+                </tr>
+                <tr>
+                    <td>Fisika</td>
+                </tr>
+                <tr>
+                    <td>Matematika</td>
+                </tr>
+                <tr>
+                    <td>Ekonomi</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Arab</td>
+                </tr>
+                <tr>
+                    <td>Ekonomi</td>
+                </tr>
+                <tr>
+                    <td rowspan="6">Jumat</td>
+                    <td>Koding</td>
+                </tr>
+                <tr>
+                    <td>Fisika</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Indonesia</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Pancasila</td>
+                </tr>
+                <tr>
+                    <td>Seni Budaya</td>
+                </tr>
+                <tr>
+                    <td>Bahasa Inggris</td>
+                </tr>
+            </tbody>
+        </table>
 </body>
-
 </html>
