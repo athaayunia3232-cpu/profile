@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mie Ayam Pak Jago - Mie Ayam Terenak di Kota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D4380D;
+            --secondary: #FAAD14;
+            --dark: #1A1A2E;
+            --light: #FFF8F0;
+            --accent: #CF1322;
+            --gray: #666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 12px 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--primary);
+        }
+
+        .nav-logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: var(--dark) !important;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--dark);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85), rgba(212, 56, 13, 0.7)), 
+                        url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(250, 173, 20, 0.2), transparent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(250, 173, 20, 0.2);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(250, 173, 20, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid white;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        /* KEUNGGULAN SECTION */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .keunggulan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .keunggulan-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .keunggulan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .keunggulan-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .keunggulan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .keunggulan-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .keunggulan-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .keunggulan-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* PRODUK SECTION */
+        .produk-section {
+            background: white;
+        }
+
+        .produk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produk-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            background: var(--light);
+        }
+
+        .produk-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .produk-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .produk-card:hover .produk-img {
+            transform: scale(1.05);
+        }
+
+        .produk-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .produk-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .produk-info {
+            padding: 25px;
+        }
+
+        .produk-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .produk-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .produk-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .produk-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .produk-price small {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .btn-order {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-order:hover {
+            background: var(--dark);
+            transform: scale(1.05);
+        }
+
+        /* TESTIMONI SECTION */
+        .testimoni-section {
+            background: linear-gradient(135deg, var(--dark), #16213E);
+            color: white;
+        }
+
+        .testimoni-section .section-header h2 {
+            color: white;
+        }
+
+        .testimoni-section .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .testimoni-section .section-header .subtitle {
+            color: var(--secondary);
+        }
+
+        .testimoni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimoni-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .testimoni-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .testimoni-stars {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .testimoni-card p {
+            font-style: italic;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .testimoni-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimoni-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimoni-author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .testimoni-author-info span {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* KONTAK SECTION */
+        .kontak-section {
+            background: var(--light);
+        }
+
+        .kontak-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .kontak-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .kontak-info p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .kontak-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .kontak-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .kontak-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .kontak-item-text h4 {
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .kontak-item-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .kontak-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 56, 13, 0.4);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--secondary);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(212, 56, 13, 0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .kontak-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: right 0.3s;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                color: var(--dark) !important;
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">Mie Ayam <span>Pak Jago</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#keunggulan">Keunggulan</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#kontak" class="nav-cta">Pesan Sekarang</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <span class="hero-badge">🍜 #1 Mie Ayam Terfavorit Sejak 2010</span>
+            <h1>Nikmati Sensasi <span>Mie Ayam</span> Autentik yang Bikin Ketagihan!</h1>
+            <p>Dibuat dengan resep turun-temurun, menggunakan mie segar handmade dan ayam kampung pilihan. Setiap mangkuk adalah karya seni rasa yang tak terlupakan.</p>
+            <div class="hero-buttons">
+                <a href="#produk" class="btn-primary">
+                    <i class="fas fa-utensils"></i> Lihat Menu
+                </a>
+                <a href="#kontak" class="btn-secondary">
+                    <i class="fas fa-phone"></i> Hubungi Kami
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Tahun Pengalaman</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Pelanggan Puas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9</h3>
+                    <p>Rating Google</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN SECTION -->
+    <section class="section" id="keunggulan">
+        <div class="section-header fade-in">
+            <p class="subtitle">Mengapa Memilih Kami</p>
+            <h2>Keunggulan Mie Ayam Pak Jago</h2>
+            <p>Kami berkomitmen memberikan pengalaman kuliner terbaik dengan kualitas yang tidak pernah compromis</p>
+        </div>
+        <div class="keunggulan-grid">
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Bahan Segar & Alami</h3>
+                <p>Menggunakan bahan-bahan segar setiap hari tanpa pengawet. Ayam kampung pilihan dan sayuran organik dari petani lokal.</p>
+            </div>
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <h3>Mie Handmade</h3>
+                <p>Mie dibuat sendiri setiap hari dengan teknik tradisional untuk menghasilkan tekstur kenyal yang sempurna.</p>
+            </div>
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Resep Turun Temurun</h3>
+                <p>Resep warisan keluarga yang telah disempurnakan selama 3 generasi, menghasilkan cita rasa yang khas dan autentik.</p>
+            </div>
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <h3>Delivery Cepat</h3>
+                <p>Layanan antar cepat ke seluruh kota. Mie ayam tetap hangat dan nikmat sampai di tangan Anda.</p>
+            </div>
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Harga Terjangkau</h3>
+                <p>Kualitas premium dengan harga yang ramah di kantong. Porsi besar dan mengenyangkan untuk semua kalangan.</p>
+            </div>
+            <div class="keunggulan-card fade-in">
+                <div class="keunggulan-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Higienis & Halal</h3>
+                <p>Diproses dengan standar kebersihan tinggi dan sudah tersertifikasi halal MUI. Aman untuk seluruh keluarga.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUK SECTION -->
+    <section class="section produk-section" id="produk">
+        <div class="section-header fade-in">
+            <p class="subtitle">Menu Pilihan</p>
+            <h2>Produk Unggulan Kami</h2>
+            <p>Pilihan menu mie ayam variatif yang siap memanjakan lidah Anda</p>
+        </div>
+        <div class="produk-grid">
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600" alt="Mie Ayam Original" class="produk-img">
+                    <span class="produk-badge">Best Seller</span>
+                </div>
+                <div class="produk-info">
+                    <h3>Mie Ayam Original</h3>
+                    <p>Mie ayam klasik dengan topping ayam cincang berbumbu, sawi hijau, dan pangsit goreng renyah.</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 18.000 <small>/porsi</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600" alt="Mie Ayam Bakso" class="produk-img">
+                    <span class="produk-badge">Favorit</span>
+                </div>
+                <div class="produk-info">
+                    <h3>Mie Ayam Bakso</h3>
+                    <p>Kombinasi mie ayam dengan bakso sapi homemade yang kenyal dan juicy. Ditambah kuah kaldu gurih.</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 22.000 <small>/porsi</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600" alt="Mie Ayam Special" class="produk-img">
+                    <span class="produk-badge">Premium</span>
+                </div>
+                <div class="produk-info">
+                    <h3>Mie Ayam Special Jago</h3>
+                    <p>Paket lengkap mie ayam dengan bakso, pangsit, ceker, dan extra topping. Porsi jumbo untuk yang lapar!</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 30.000 <small>/porsi</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?w=600" alt="Mie Yamin" class="produk-img">
+                </div>
+                <div class="produk-info">
+                    <h3>Mie Yamin Manis</h3>
+                    <p>Mie yamin dengan bumbu kecap manis khas, dilengkapi ayam suwir dan sayuran segar. Cocok untuk pecinta rasa manis.</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 20.000 <small>/porsi</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600" alt="Mie Ayam Pedas" class="produk-img">
+                    <span class="produk-badge">🌶️ Pedas</span>
+                </div>
+                <div class="produk-info">
+                    <h3>Mie Ayam Pedas Mercon</h3>
+                    <p>Untuk pecinta pedas! Mie ayam dengan sambal mercon level 1-5 yang bikin keringetan tapi nagih.</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 20.000 <small>/porsi</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produk-card fade-in">
+                <div class="produk-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600" alt="Paket Hemat" class="produk-img">
+                    <span class="produk-badge">Hemat</span>
+                </div>
+                <div class="produk-info">
+                    <h3>Paket Hemat Ber-2</h3>
+                    <p>2 porsi mie ayam + 2 es teh + pangsit goreng. Paket sempurna untuk makan bareng pasangan atau sahabat.</p>
+                    <div class="produk-footer">
+                        <span class="produk-price">Rp 45.000 <small>/paket</small></span>
+                        <a href="#kontak" class="btn-order">Pesan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI SECTION -->
+    <section class="section testimoni-section" id="testimoni">
+        <div class="section-header fade-in">
+            <p class="subtitle">Testimoni Pelanggan</p>
+            <h2>Apa Kata Mereka?</h2>
+            <p>Ribuan pelanggan telah merasakan kelezatan mie ayam kami. Ini cerita mereka.</p>
+        </div>
+        <div class="testimoni-grid">
+            <div class="testimoni-card fade-in">
+                <div class="testimoni-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Mie ayam terenak yang pernah saya coba di kota ini! Mienya kenyal, ayamnya berlimpah, dan kuahnya gurih banget. Sudah jadi langganan keluarga setiap minggu."</p>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">AS</div>
+                    <div class="testimoni-author-info">
+                        <h4>Andi Saputra</h4>
+                        <span>Pelanggan Setia sejak 2018</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni-card fade-in">
+                <div class="testimoni-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Porsinya besar, harganya murah, rasanya juara! Mie Ayam Special Jago adalah favorit saya. Ceker dan pangsitnya bikin nggak bisa berhenti makan. Recommended!"</p>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">SR</div>
+                    <div class="testimoni-author-info">
+                        <h4>Siti Rahayu</h4>
+                        <span>Food Blogger</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni-card fade-in">
+                <div class="testimoni-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Delivery-nya cepat dan mie-nya sampai masih hangat! Rasanya sama enaknya seperti makan di tempat. Pelayanan ramah dan packagingnya rapi. Top deh!"</p>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">BW</div>
+                    <div class="testimoni-author-info">
+                        <h4>Budi Wijaya</h4>
+                        <span>Pelanggan Delivery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK SECTION -->
+    <section class="section kontak-section" id="kontak">
+        <div class="section-header fade-in">
+            <p class="subtitle">Hubungi Kami</p>
+            <h2>Pesan atau Tanya Sekarang</h2>
+            <p>Kami siap melayani Anda. Hubungi kami untuk pemesanan atau pertanyaan apapun.</p>
+        </div>
+        <div class="kontak-wrapper">
+            <div class="kontak-info fade-in">
+                <h3>Mari Terhubung Dengan Kami</h3>
+                <p>Jangan ragu untuk menghubungi kami kapan saja. Tim kami siap membantu Anda dengan pemesanan, reservasi tempat, atau pertanyaan seputar menu kami.</p>
+                <div class="kontak-detail">
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="kontak-item-text">
+                            <h4>Alamat</h4>
+                            <p>Jl. Kuliner Nusantara No. 88, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="kontak-item-text">
+                            <h4>Telepon</h4>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="kontak-item-text">
+                            <h4>Email</h4>
+                            <p>info@mieayampakjago.com</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="kontak-item-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 09.00 - 22.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kontak-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">No. Telepon</label>
+                        <input type="tel" id="phone" placeholder="Masukkan no. telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+                        <textarea id="pesan" placeholder="Tulis pesan atau pesanan Anda..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Mie Ayam <span>Pak Jago</span></h3>
+                <p>Mie ayam autentik dengan resep turun-temurun sejak 2010. Kami berkomitmen menyajikan cita rasa terbaik dengan bahan berkualitas untuk setiap pelanggan.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#keunggulan">Keunggulan</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Menu Makanan</h4>
+                <ul>
+                    <li><a href="#">Mie Ayam Original</a></li>
+                    <li><a href="#">Mie Ayam Bakso</a></li>
+                    <li><a href="#">Mie Ayam Special</a></li>
+                    <li><a href="#">Mie Yamin</a></li>
+                    <li><a href="#">Paket Hemat</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Jam Buka</h4>
+                <ul>
+                    <li><a href="#">Senin - Jumat: 09.00 - 22.00</a></li>
+                    <li><a href="#">Sabtu: 09.00 - 23.00</a></li>
+                    <li><a href="#">Minggu: 10.00 - 22.00</a></li>
+                    <li><a href="#">Hari Libur: 10.00 - 21.00</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mie Ayam Pak Jago. All Rights Reserved. Made with ❤️ | <a href="#">Kebijakan Privasi</a></p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when link clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const pesan = document.getElementById('pesan').value;
+
+            // Show success message
+            alert(`Terima kasih ${nama}! Pesan Anda telah kami terima.\n\nKami akan segera menghubungi Anda melalui ${email} atau ${phone}.\n\nSalam,\nMie Ayam Pak Jago`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add stagger animation delay to cards
+        document.querySelectorAll('.keunggulan-card, .produk-card, .testimoni-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
