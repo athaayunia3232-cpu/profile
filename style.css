@@ -134,3 +134,37 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
 }
+
+.footer-social a {
+  font-size: 28px;
+  color: #6a4c93;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #333;
+  background: #f5f0ff;
+  padding: 10px 15px;
+  border-radius: 12px;
+}
+
+.footer-social i {
+  font-size: 28px;
+  color: #6a4c93;
+}
+
+.footer-social span {
+  font-size: 14px;
+  line-height: 1.2;
+}
